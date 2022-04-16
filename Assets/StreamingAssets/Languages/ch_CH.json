@@ -1,0 +1,56 @@
+{
+    "items":[
+        {
+            "key": "langText",
+            "value":"中國人"
+        },
+        {
+            "key": "play",
+            "value":"玩"
+        },
+        {
+            "key": "settings",
+            "value":"設置"
+        },
+        {
+            "key": "exit",
+            "value":"輸出"
+        },
+        {
+            "key": "custom_1",
+            "value":"輸出 "
+        },
+        {
+            "key": "custom_2",
+            "value":"附加項目"
+        },
+        {
+            "key": "skin",
+            "value":"皮革"
+        },
+        {
+            "key": "lang",
+            "value":"語言"
+        },
+        {
+            "key": "back",
+            "value":"語言"
+        },
+        {
+            "key": "continue",
+            "value":"繼續"
+        },
+        {
+            "key":"congratulations",
+            "value":"恭喜!"
+        },
+        {
+            "key":"inMenu",
+            "value":"在菜单上"
+        },
+        {
+            "key":"customization",
+            "value":"Кастомизация"
+        }
+    ]
+}

@@ -1,0 +1,56 @@
+{
+    "items":[
+        {
+            "key": "langText",
+            "value":"English"
+        },
+        {
+            "key": "play",
+            "value":"Play"
+        },
+        {
+            "key": "settings",
+            "value":"Settings"
+        },
+        {
+            "key": "exit",
+            "value":"Exit"
+        },
+        {
+            "key": "custom_1",
+            "value":"Custom1"
+        },
+        {
+            "key": "custom_2",
+            "value":"Custom2"
+        },
+        {
+            "key": "skin",
+            "value":"Skin"
+        },
+        {
+            "key": "lang",
+            "value":"Language"
+        },
+        {
+            "key": "back",
+            "value":"Back"
+        },
+        {
+            "key": "continue",
+            "value":"Continue"
+        },
+        {
+            "key":"congratulations",
+            "value":"Congratulations!"
+        },
+        {
+            "key":"inMenu",
+            "value":"In menu"
+        },
+        {
+            "key":"customization",
+            "value":"Customization"
+        }
+    ]
+}

@@ -1,0 +1,56 @@
+{
+    "items":[
+        {
+            "key": "langText",
+            "value":"Український"
+        },
+        {
+            "key": "play",
+            "value":"Грати"
+        },
+        {
+            "key": "settings",
+            "value":"Налаштування"
+        },
+        {
+            "key": "exit",
+            "value":"Вихід"
+        },
+        {
+            "key": "custom_1",
+            "value":"Шапка"
+        },
+        {
+            "key": "custom_2",
+            "value":"Дод. предмет"
+        },
+        {
+            "key": "skin",
+            "value":"Скін"
+        },
+        {
+            "key": "lang",
+            "value":"Мова"
+        },
+        {
+            "key": "back",
+            "value":"Назад"
+        },
+        {
+            "key": "continue",
+            "value":"Продовжити"
+        },
+        {
+            "key":"congratulations",
+            "value":"Вітаємо!"
+        },
+        {
+            "key":"inMenu",
+            "value":"У меню"
+        },
+        {
+            "key":"customization",
+            "value":"Кастомизация"
+        }
+    ]
+}

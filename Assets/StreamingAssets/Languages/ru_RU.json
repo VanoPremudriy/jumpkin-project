@@ -1,0 +1,56 @@
+﻿{
+    "items":[
+        {
+            "key": "langText",
+            "value":"Русский"
+        },
+        {
+            "key": "play",
+            "value":"Играть"
+        },
+        {
+            "key": "settings",
+            "value":"Настройки"
+        },
+        {
+            "key": "exit",
+            "value":"Выход"
+        },
+        {
+            "key": "custom_1",
+            "value":"Шапка"
+        },
+        {
+            "key": "custom_2",
+            "value":"Доп. предмет"
+        },
+        {
+            "key": "skin",
+            "value":"Скин"
+        },
+        {
+            "key": "lang",
+            "value":"Язык"
+        },
+        {
+            "key": "back",
+            "value":"Назад"
+        },
+        {
+            "key": "continue",
+            "value":"Продолжить"
+        },
+        {
+            "key":"congratulations",
+            "value":"Поздравляем!"
+        },
+        {
+            "key":"inMenu",
+            "value":"В меню"
+        },
+        {
+            "key":"customization",
+            "value":"Кастомизация"
+        }
+    ]
+}
