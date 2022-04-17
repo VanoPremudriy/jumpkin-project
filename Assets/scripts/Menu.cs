@@ -2,39 +2,69 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+ 
+/*!
+	\brief Класс отвечающий за меню игры
+*/
 public class Menu : MonoBehaviour
 {
+    ///Менеджер локализациии
     [SerializeField] private LocalizationManager localizationManager;
-    [SerializeField] private PlayerData playerData;
-    public GameObject[] pump2;
-    public GameObject ch;
+
+    ///Поворачиваемый объект
     public GameObject go;
-    public GameObject lig;
+    
+    ///Тыква
     public GameObject[] pump;
+
+    ///Кастомные предметы
     public GameObject[] custom1;
+
+    /// Вектор для поворота
     public Vector3 localAxis;
+
+    ///Поле для поворота
     public float deltaAngle;
+
+    ///Скорость поворота
     public float speedRotation;
-    bool isSet = false;
-    bool isAct = true;
-    //public GameObject pauseMenuUI;
+
+    ///Скин персонажа
     private int skin = 0;
+
+    ///Счетчик кастомных предметов
     private int customCount1 = 0;
+
+    ///Кастомные предметы 2
     public GameObject[] custom2;
+
+    ///Счетчик кастомных предметов 2
     private int customCount2 = 0;
+    
+    ///Игрок
     public GameObject player;
+
+    ///Вспомогательное логическое поле
     bool isPlayerInMenu = true;
+
+    ///Языки
     string[] languages = {"ru_RU", "en_US", "ch_CH", "ua_UA"};
     int langCount;
-    [SerializeField] private Slider MusicSlider;
-    [SerializeField] private Slider EffectsSlider;
-    [SerializeField] private Toggle MusicToggle;
 
+    ///Ползунок уровня громкости музыки
+    [SerializeField] private Slider MusicSlider;
+
+    ///Ползунок уровня громкости эффектов
+    [SerializeField] private Slider EffectsSlider;
+
+    ///Вкл/Вкл музыка
+    [SerializeField] private Toggle MusicToggle;
+    
+    ///Музыка
     [SerializeField] AudioSource MusicAudioSource;
 
-    //public Animation anim;
-    // Start is called before the first frame update
-    void Start()
+    void Start() ///Стартовый метод
     {
         if (PlayerPrefs.HasKey("MusicVolume")) MusicSlider.value = PlayerPrefs.GetFloat("MusicVolume");
         if (PlayerPrefs.HasKey("EffectsVolume")) EffectsSlider.value = PlayerPrefs.GetFloat("EffectsVolume");
@@ -43,7 +73,7 @@ public class Menu : MonoBehaviour
             MusicToggle.isOn = true;
             else MusicToggle.isOn = false;
         } 
-        //pauseMenuUI.SetActive(false);
+
         Time.timeScale = 1f;
         customCount1 = 0;
 
@@ -61,30 +91,16 @@ public class Menu : MonoBehaviour
         localizationManager.CurrentLanguage = languages[langCount];
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetButton("Jump"))
-        {
-            if (isAct)
-            {
-                ch.SetActive(false);
-                isAct = false;
-            }
-            else
-            {
-                ch.SetActive(true);
-                isAct = true;
-            }
-        }
 
+    void Update() ///Метод обновления кадров
+    {
         if (!MusicToggle.isOn) MusicAudioSource.volume =0;
         else MusicAudioSource.volume = MusicSlider.value;
 
         RenderSettings.skybox.SetFloat("_Rotation", Time.time * 10f);
     }
 
-    public void newGame()
+    public void newGame() ///Начало игры
     {
         int isMusic;
         if (MusicToggle.isOn) isMusic = 1;
@@ -92,18 +108,12 @@ public class Menu : MonoBehaviour
         PlayerPrefs.SetFloat("MusicVolume", MusicSlider.value);
         PlayerPrefs.SetFloat("EffectsVolume", EffectsSlider.value);
         PlayerPrefs.SetInt("isMusic",isMusic);
-        Application.LoadLevel(1);
+        SceneManager.LoadScene(1);
     }
 
-    public void setSet()
-    {
-        isSet = true;
-    }
 
-    public void Settings()
+    public void Settings() ///Настройки
     {
-       // anim.Stop();
-        //DeltaRotate(lig, localAxis, deltaAngle, speedRotation);
         if (isPlayerInMenu)
         {
             DeltaRotate(go, localAxis, deltaAngle, speedRotation);
@@ -126,7 +136,8 @@ public class Menu : MonoBehaviour
             PlayerPrefs.SetInt("isMusic",isMusic);
     }
 
-    public void Customization(){
+    public void Customization() ///Кастомизация
+    {
         DeltaRotate(go, localAxis, deltaAngle*2, speedRotation);
         //DeltaRotate(lig, localAxis, deltaAngle, speedRotation);
         if (isPlayerInMenu)
@@ -144,12 +155,12 @@ public class Menu : MonoBehaviour
     }
 
 
-    void DeltaRotate(GameObject go, Vector3 localAxis, float deltaAngle, float speedRotation)
+    void DeltaRotate(GameObject go, Vector3 localAxis, float deltaAngle, float speedRotation) ///Метод поворота камеры
     {
         StartCoroutine(c_RotateDelta(go, localAxis, deltaAngle, speedRotation));
     }
 
-    IEnumerator c_RotateDelta(GameObject go, Vector3 localAxis, float deltaAngle, float speedRotation)
+    IEnumerator c_RotateDelta(GameObject go, Vector3 localAxis, float deltaAngle, float speedRotation) ///Метод поворота камеры
     {
         float total = 0.0f;
 
@@ -178,12 +189,8 @@ public class Menu : MonoBehaviour
         }
     }
 
-    public void changeText()
-    {
-        
-    }
 
-    public void firstSkin()
+    public void firstSkin() ///Изменение скина
     {
         pump[skin].SetActive(false);
         if (skin == 0) skin = pump.Length - 1;
@@ -192,7 +199,7 @@ public class Menu : MonoBehaviour
         PlayerPrefs.SetInt("Skin", skin);
     }
 
-    public void secondSkin()
+    public void secondSkin() ///Изменение скина
     {
         pump[skin].SetActive(false);
         if (skin == pump.Length -1) skin = 0;
@@ -202,7 +209,7 @@ public class Menu : MonoBehaviour
     }
 
 
-    public void firstCustom1()
+    public void firstCustom1() ///Изменение кастомной вещи
     {
         custom1[customCount1].SetActive(false);
         if (customCount1 == 0) customCount1 = custom1.Length - 1;
@@ -211,7 +218,7 @@ public class Menu : MonoBehaviour
         PlayerPrefs.SetInt("Custom1", customCount1);
 
     }
-    public void secondCustom1()
+    public void secondCustom1() ///Изменение кастомной вещи
     {
         custom1[customCount1].SetActive(false);
         if (customCount1 == custom1.Length - 1) customCount1 = 0;
@@ -220,7 +227,7 @@ public class Menu : MonoBehaviour
         PlayerPrefs.SetInt("Custom1", customCount1);
     }
 
-    public void firstCustom2()
+    public void firstCustom2() ///Изменение кастомной вещи 2
     {
         custom2[customCount2].SetActive(false);
         if (customCount2 == 0) customCount2 = custom2.Length - 1;
@@ -229,7 +236,7 @@ public class Menu : MonoBehaviour
         PlayerPrefs.SetInt("Custom2", customCount2);
 
     }
-    public void secondCustom2()
+    public void secondCustom2() ///Изменение кастомной вещи 2
     {
         custom2[customCount2].SetActive(false);
         if (customCount2 == custom2.Length - 1) customCount2 = 0;
@@ -238,20 +245,21 @@ public class Menu : MonoBehaviour
         PlayerPrefs.SetInt("Custom2", customCount2);
     }
 
-    public void firstLocalization()
+    public void firstLocalization() ///Изменение языка
     {
         if (langCount == 0) langCount = languages.Length - 1;
         else langCount--;
         localizationManager.CurrentLanguage = languages[langCount];
     }
-    public void secondLocalization()
+    public void secondLocalization() ///Изменение языка
     {
         if ( langCount == languages.Length - 1) langCount =0;
         else langCount++;
         localizationManager.CurrentLanguage = languages[langCount];
     }
 
-    public void Exit(){
+    public void Exit() ///Выход
+    {
         Application.Quit();
     }
 }

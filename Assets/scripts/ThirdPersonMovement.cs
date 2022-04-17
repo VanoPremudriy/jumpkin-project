@@ -3,70 +3,126 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/*!
+	\brief Класс, отвечающий за настройку управления персонажа
+*/
+
 public class ThirdPersonMovement : MonoBehaviour {
 
-    public CharacterController controller;
-    public float originalSpeed = 6.0f;
-    public float sprintSpeed = 5.0f;
-    public float speed = 6.0f;
-    public float turnSmoothTime = 0.1f;
+    ///Контроллер персонажа
+    public CharacterController controller; 
+
+    ///Оригинальная скорость
+    public float originalSpeed = 6.0f; 
+
+    ///Ускорение
+    public float sprintSpeed = 5.0f; 
+
+    ///Текущая скорость
+    public float speed = 6.0f; 
+    ///Вспомогательная переменная для поворотов
+    public float turnSmoothTime = 0.1f; 
     float turnSmoothVelocity;
-    public Transform cam;
+
+    ///Камера
+    public Transform cam; 
+
+    ///Высота прыжка
     public float jumpHeight;
-    public float gravity = -9.8f;
+
+    ///Гравитация
+    public float gravity = -9.8f; 
     Vector3 velocity;
+    ///Проверка касания земли
     public Transform groundCheck;
-    public float groundDistance = 0.01f;
-    public LayerMask groundMask;
-    bool isGrounded;
+
+    ///Дистанция проверки
+    public float groundDistance = 0.01f; 
+
+    ///Маска земли
+    [SerializeField] LayerMask groundMask; 
+
+    ///Стояние на земле
+    bool isGrounded; 
+
+    ///Курсор
     public bool visibleCursor;
+
     float horizontal, vertical;
-    int jumpCount = 0;
+
+    ///Кол-во прыжков
+    int jumpCount = 0; 
 
     //stamina/////////////////////////////////////////////
+    ///Ползунок выносливости
     public Slider staminaSlider;
+
+    ///Значение выносливости
     public float staminaValue;
+    
+    ///Минимальная выносливость
     public float minStaminaValue;
+
+    ///Максимальная выносливость
     public float maxStaminaValue;
+
+    ///Восстановление выносливости
     public float staminaReturn;
     //////////////////////////////////////////////////////
-    bool isMove;
+
+    ///Движение персонажа
+    bool isMove; 
+
+    ///Ускорение персонажа
     bool isCanSprint;
-    bool isJumpDown = false;
 
     //audio//////////////////////////////////////////////
-    [SerializeField] AudioSource jumpAudioSource;
+    ///Звук
+    public AudioSource jumpAudioSource;
 
-    [SerializeField] AudioSource jumpDownAudioSource;
+    ///Звук
+    public AudioSource jumpDownAudioSource;
+    
+    ///Звук
+    public AudioSource flyAudioSource;
 
-    [SerializeField] AudioSource flyAudioSource;
+    ///Звук
+    public AudioSource pickUpAudioSource;
 
-    [SerializeField] AudioSource pickUpAudioSource;
+    ///Фонарь-1
+    public GameObject pointLight;
 
-    [SerializeField] GameObject pointLight;
-    [SerializeField] GameObject spotLight;
+    ///Фонарь-2
+    public GameObject spotLight;
     /////////////////////////////////////////////////////
     
     //pickUpCoins////////////////////////////////////////
-    public Text collectedCoins; //Количество собранных монет
-    public Text allCollectableCoins; //Общее количество монет на уровне
-    
-    public static float collectCoins; //Считаем собранные монетки
-    private float allCoinsStart; //Считаем все монетки находящиеся на уровне
 
-    [SerializeField] GameObject portal;
+    ///Количество собранных монет
+    public Text collectedCoins; 
+
+    ///Общее количество монет на уровне
+    public Text allCollectableCoins;
+    
+    ///Считаем собранные монетки
+    public static float collectCoins;
+
+    ///Считаем все монетки находящиеся на уровне
+    private float allCoinsStart;
+
+    ///Портал на другой уровень
+    public GameObject portal;
     //////////////////////////////////////////////////////
 
 
-    void Start()
+    void Start() ///Стартовый метод
     {
         Cursor.visible = visibleCursor;
         controller = GetComponent<CharacterController>();
         portal.SetActive(false);
     }
 
-    // Update is called once per frame
-    void Update()
+    void Update() ///Метод обновления кадров
     {
         Move();
         Jump();
@@ -74,7 +130,8 @@ public class ThirdPersonMovement : MonoBehaviour {
         Light();
     }
 
-    public void Move()
+    
+    public void Move() ///Метод, отвечающий за движение персонажа
     {
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
@@ -105,8 +162,8 @@ public class ThirdPersonMovement : MonoBehaviour {
             flyAudioSource.Stop();
         }
     }
-
-    public void Jump()
+  
+    public void Jump() ///Метод, отвечающий за прыжки персонажка
     {
        
         if (Input.GetButtonDown("Jump") && jumpCount < 2)
@@ -125,7 +182,7 @@ public class ThirdPersonMovement : MonoBehaviour {
 
     }
 
-    public void Sprint()
+    public void Sprint() ///Метод, отвечающий за ускорение персонажа
     {
             if (Input.GetKey(KeyCode.LeftShift) && staminaValue > 0 && isMove && isCanSprint && isGrounded)
             {
@@ -147,7 +204,7 @@ public class ThirdPersonMovement : MonoBehaviour {
 
     }
 
-    public void OnTriggerEnter(Collider other)
+    public void OnTriggerEnter(Collider other) ///Действия при столкновении объекта с другими
     {
         if (other.gameObject.layer.Equals("Ground")){
             jumpDownAudioSource.Play();
@@ -170,7 +227,7 @@ public class ThirdPersonMovement : MonoBehaviour {
 
     }
 
-    void Awake()
+    void Awake() ///Метод для собирания предметов
     {
         allCoinsStart = GameObject.FindGameObjectsWithTag("PickUpCoins").Length;
         collectCoins = 0;
@@ -178,17 +235,17 @@ public class ThirdPersonMovement : MonoBehaviour {
         CurrentCollectedCoins();
     }
 
-    public void SetAllCollectableCoins()
+    public void SetAllCollectableCoins() ///Метод, отвечающий за вывод кол-ва собранных предметов
     {
         allCollectableCoins.text = "/" + allCoinsStart.ToString();
     }
     
-    public void CurrentCollectedCoins()
+    public void CurrentCollectedCoins() ///Метод для конвертации собранных предметов в текст
     {
         collectedCoins.text = collectCoins.ToString();
     }
 
-    private void Light(){
+    private void Light(){ ///Метод, отвечающий за фонарь
         if (Input.GetMouseButton(0)){
             spotLight.SetActive(true);
             pointLight.SetActive(false);

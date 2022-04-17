@@ -3,15 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/*!
+	\brief Класс отвечающий за локализацию игры
+*/
+
 public class LocalizedText : MonoBehaviour
 {
-    [SerializeField]
-    private string key;
+    ///Ключ текста
+    [SerializeField] private string key;
 
+    ///Менеджер локализации
     private LocalizationManager localizationManager;
-    private Text text;
 
-    void Awake()
+    ///Текст
+    private Text text; 
+
+    void Awake()///Запуск менеджера
     {
         if (localizationManager == null)
         {
@@ -24,17 +31,17 @@ public class LocalizedText : MonoBehaviour
         localizationManager.OnLanguageChanged += UpdateText;
     }
 
-    void Start()
+    void Start() /// Стартовый метод
     {
         UpdateText();
     }
 
-    private void OnDestroy()
+    private void OnDestroy() ///Метод смены текста
     {
         localizationManager.OnLanguageChanged -= UpdateText;
     }
 
-    virtual protected void UpdateText()
+    virtual protected void UpdateText() ///Метод обновления текста
     {
         if (gameObject == null) return;
 

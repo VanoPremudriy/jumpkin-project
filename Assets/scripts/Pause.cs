@@ -2,20 +2,39 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+
+/*!
+	\brief Класс отвечающий за паузу игры
+*/
 public class Pause : MonoBehaviour
 {
+    ///Менеджер локализаци
     [SerializeField] private LocalizationManager localizationManager;
+
+    ///Вспомогательная логическая переменная
     public static bool isGamePause = false;
+
+    ///Интерфейс паузы
     public GameObject pauseMenuUI;
+
+    ///Интерфейс игры
     public GameObject gameInterface;
+
+    ///Тыква
     public GameObject[] pump;
+
+    ///Кастомный предмет
     public GameObject[] Custom1;
+
+    ///Кастомный предмет 2
     public GameObject[] Custom2;
-    [SerializeField] private PlayerData playerData;
+
+    ///Музыка
     [SerializeField] private AudioSource MusicAudioSource;
+
+    ///Эффекты
     [SerializeField] private AudioSource[] EffectsAudioSource;
-    // Start is called before the first frame update
-    void Start()
+    void Start() ///Стартовый метод
     {
         MusicAudioSource.volume = PlayerPrefs.GetFloat("MusicVolume");
         pump[PlayerPrefs.GetInt("Skin")].SetActive(true);
@@ -27,8 +46,7 @@ public class Pause : MonoBehaviour
         GameObject.FindGameObjectWithTag("EndGameMenu").SetActive(false);
     }
 
-    // Update is called once per frame
-    void Update()
+    void Update() ///Метод обновления кадров
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -44,7 +62,7 @@ public class Pause : MonoBehaviour
         localizationManager.CurrentLanguage = PlayerPrefs.GetString("Language");
     }
 
-    void resume()
+    void resume() ///Выход из паузы
     {
         pauseMenuUI.SetActive(false);
         gameInterface.SetActive(true);
@@ -54,7 +72,7 @@ public class Pause : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
     }
 
-    void pause()
+    void pause() ///Пауза
     {
         Cursor.visible = true;
         pauseMenuUI.SetActive(true);
@@ -64,15 +82,17 @@ public class Pause : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
     }
 
-    public void loadMenu()
+    public void loadMenu() ///Выход из паузы
     {
         pauseMenuUI.SetActive(false);
         gameInterface.SetActive(true);
         Time.timeScale = 1f;
         isGamePause = false;
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
-    public void quitGame()
+    public void quitGame() ///Вызод из игры
     {
         Application.LoadLevel(0);
     }

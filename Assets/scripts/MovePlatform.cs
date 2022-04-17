@@ -2,15 +2,33 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+/*!
+	\brief Класс отвечающий за движение объектов по осям
+*/
+
 public class MovePlatform : MonoBehaviour
 {
-    float minX, minY, minZ;
+
+    ///Минимальная координата
+    public float minX, minY, minZ;
+
+    ///Максимальная координата
     public float maxX, maxY, maxZ;
+
+    ///Скорость
     public float xSpeed, ySpeed, zSpeed;
+
+    ///Выбор координаты
     public bool isX, isY, isZ;
+
+    ///Логические поля
     bool inMax, inMin;
+
+    ///Векто передвижения
     Vector3 vector3;
-    void Start()
+
+    void Start() ///Стартовый метод
     {
         inMax = true;
         minX = transform.position.x;
@@ -18,11 +36,9 @@ public class MovePlatform : MonoBehaviour
         minZ = transform.position.z;
     }
 
-    // Update is called once per frame
-    void Update()
+    void Update() ///Метод обновления кадров
     {
-        //transform.Translate(transform.forward * Time.deltaTime * 1);
-        // transform.Translate(vector3 * Time.deltaTime);
+
         if (isX) inX();
         else
         if (isY) inY();
@@ -30,7 +46,7 @@ public class MovePlatform : MonoBehaviour
         if (isZ) inZ();
     }
 
-    void inX()
+    void inX() ///Движение по оси X
     {
         if (inMax)
         {
@@ -54,7 +70,7 @@ public class MovePlatform : MonoBehaviour
         }
     }
 
-    void inY()
+    void inY() ///Движение по оси Y
     {
         if (inMax)
         {
@@ -78,7 +94,7 @@ public class MovePlatform : MonoBehaviour
         }
     }
 
-    void inZ()
+    void inZ() ///Движение по оси Z
     {
         if (inMax)
         {

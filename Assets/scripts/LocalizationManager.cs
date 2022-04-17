@@ -3,16 +3,21 @@ using System.IO;
 using System.Collections.Generic;
 using UnityEngine;
 
+/*!
+	\brief Класс отвечающий за локализацию игры
+*/
+
 public class LocalizationManager : MonoBehaviour
 {
     private string currentLanguage;
     private Dictionary<string, string> localizedText;
     public static bool isReady = false;
 
+    ///Изменение текста
     public delegate void ChangeLangText();
     public event ChangeLangText OnLanguageChanged;
 
-    void Awake()
+    void Awake() ///Метод смены языка
     {
         if (!PlayerPrefs.HasKey("Language"))
         {
@@ -38,7 +43,7 @@ public class LocalizationManager : MonoBehaviour
         LoadLocalizedText(currentLanguage);
     }
 
-    public void LoadLocalizedText(string langName)
+    public void LoadLocalizedText(string langName) ///Метод смены языка
     {
         string path = Application.streamingAssetsPath + "/Languages/" + langName + ".json";
 
@@ -69,7 +74,7 @@ public class LocalizationManager : MonoBehaviour
         OnLanguageChanged?.Invoke();
     }
 
-    public string GetLocalizedValue(string key)
+    public string GetLocalizedValue(string key) ///Перевод конкретного текста
     {
         if (localizedText.ContainsKey(key))
         {
