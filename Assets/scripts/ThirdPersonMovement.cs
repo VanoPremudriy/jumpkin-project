@@ -113,8 +113,14 @@ public class ThirdPersonMovement : MonoBehaviour {
     ///Портал на другой уровень
     public GameObject portal;
     //////////////////////////////////////////////////////
+    [SerializeField] GameObject gameOverPanel;
 
+    [SerializeField]
+    AudioSource VolodarskyAudioSource;
+    [SerializeField]
+    AudioSource VolodarskyAudioSource2;
 
+    [SerializeField] Vector3 resp;
     void Start() ///Стартовый метод
     {
         Cursor.visible = visibleCursor;
@@ -210,7 +216,6 @@ public class ThirdPersonMovement : MonoBehaviour {
             jumpDownAudioSource.Play();
             if (other.tag == "tramp")
             {
-                Debug.Log("Yes");
                 velocity.y = Mathf.Sqrt(jumpHeight *4.5f * -2f * gravity);
             }
         }
@@ -224,7 +229,25 @@ public class ThirdPersonMovement : MonoBehaviour {
             SetAllCollectableCoins();
             CurrentCollectedCoins();
       }
+        if (other.gameObject.CompareTag("AfterLava")){
+            Debug.Log("yes yes yes");
+        }
 
+        if (other.gameObject.CompareTag("Lava")){
+            foreach (var ob in this.GetComponentsInChildren<Transform>()) Destroy(ob.gameObject);
+            Destroy(this);
+            Cursor.visible = true;
+            Time.timeScale = 1f;
+            Cursor.lockState = CursorLockMode.None;
+            gameOverPanel.SetActive(true);
+            VolodarskyAudioSource.Play();
+        }
+
+        if (other.gameObject.CompareTag("Wall")){
+            Debug.Log("yes yes yes");
+            controller.Move(new Vector3(-(controller.transform.position.x - resp.x), -(controller.transform.position.y - resp.y), -(controller.transform.position.z - resp.z)));
+            VolodarskyAudioSource2.Play();
+        }
     }
 
     void Awake() ///Метод для собирания предметов

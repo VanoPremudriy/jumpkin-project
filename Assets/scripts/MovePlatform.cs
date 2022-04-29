@@ -51,7 +51,6 @@ public class MovePlatform : MonoBehaviour
         if (inMax)
         {
             transform.Translate(new Vector3(xSpeed,0,0) * Time.deltaTime);
-            Debug.Log(transform.position.x + " MAX");
             if (transform.position.x >= minX + maxX)
             {
                 inMax = false;
@@ -61,7 +60,6 @@ public class MovePlatform : MonoBehaviour
         if (inMin)
         {
             transform.Translate(new Vector3(-xSpeed, 0, 0) * Time.deltaTime);
-            Debug.Log(transform.position.x + " MIN");
             if (transform.position.x <= minX)
             {
                 inMin = false;
@@ -75,7 +73,6 @@ public class MovePlatform : MonoBehaviour
         if (inMax)
         {
             transform.Translate(new Vector3(0, ySpeed, 0) * Time.deltaTime);
-            Debug.Log(transform.position.y + " MAX");
             if (transform.position.y >= minY + maxY)
             {
                 inMax = false;
@@ -85,7 +82,6 @@ public class MovePlatform : MonoBehaviour
         if (inMin)
         {
             transform.Translate(new Vector3(0, -ySpeed, 0) * Time.deltaTime);
-            Debug.Log(transform.position.y + " MIN");
             if (transform.position.y <=  minY)
             {
                 inMin = false;
@@ -99,7 +95,6 @@ public class MovePlatform : MonoBehaviour
         if (inMax)
         {
             transform.Translate(new Vector3(0, 0, zSpeed) * Time.deltaTime);
-            Debug.Log(transform.position.z + " MAX");
             if (transform.position.z >= minZ + maxZ)
             {
                 inMax = false;
@@ -109,7 +104,6 @@ public class MovePlatform : MonoBehaviour
         if (inMin)
         {
             transform.Translate(new Vector3(0, 0, -zSpeed) * Time.deltaTime);
-            Debug.Log(transform.position.z + " MIN");
             if (transform.position.z <=  minZ)
             {
                 inMin = false;

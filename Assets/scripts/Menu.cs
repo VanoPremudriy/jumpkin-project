@@ -69,13 +69,19 @@ public class Menu : MonoBehaviour
         if (PlayerPrefs.HasKey("MusicVolume")) MusicSlider.value = PlayerPrefs.GetFloat("MusicVolume");
         if (PlayerPrefs.HasKey("EffectsVolume")) EffectsSlider.value = PlayerPrefs.GetFloat("EffectsVolume");
         if (PlayerPrefs.HasKey("isMusic")){
-            if (PlayerPrefs.GetInt("isMusic") == 1)
-            MusicToggle.isOn = true;
-            else MusicToggle.isOn = false;
+        if (PlayerPrefs.GetInt("isMusic") == 1)
+        MusicToggle.isOn = true;
+        else MusicToggle.isOn = false;
         } 
 
+        for (int i=0; i < pump.Length; i ++){
+            pump[i].SetActive(false);
+        }
+
         Time.timeScale = 1f;
+        skin = 1;
         customCount1 = 0;
+        customCount2 = 0;
 
          if (PlayerPrefs.HasKey("Skin")) skin = PlayerPrefs.GetInt("Skin");
         pump[skin].SetActive(true);
@@ -83,7 +89,6 @@ public class Menu : MonoBehaviour
         if (PlayerPrefs.HasKey("Custom1")) customCount1 = PlayerPrefs.GetInt("Custom1");
         custom1[customCount1].SetActive(true);
 
-        customCount2 = 0;
         if (PlayerPrefs.HasKey("Custom2")) customCount2 = PlayerPrefs.GetInt("Custom2");
         custom2[customCount2].SetActive(true);
 
