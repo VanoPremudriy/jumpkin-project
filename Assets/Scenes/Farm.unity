@@ -11788,12 +11788,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 624496156}
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 95.3, y: 91.00336, z: 238.9}
-  m_LocalScale: {x: 0.1, y: 200, z: 400}
+  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 232.5}
+  m_LocalScale: {x: 0.10000001, y: 200, z: 400.00003}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_Father: {fileID: 1931870241}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!4 &624843369 stripped
 Transform:
@@ -18637,6 +18637,7 @@ MonoBehaviour:
   gameOverPanel: {fileID: 0}
   VolodarskyAudioSource: {fileID: 0}
   VolodarskyAudioSource2: {fileID: 388405409}
+  resp: {x: 128.3472, y: 4.421382, z: 122.5325}
 --- !u!1001 &961053808
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20081,12 +20082,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1026538174}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 235.3, y: 91.00336, z: 116.6}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 140, y: 0, z: 110.2}
   m_LocalScale: {x: 0.1, y: 200, z: 400}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_Father: {fileID: 1931870241}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1028342736 stripped
 Transform:
@@ -23574,7 +23575,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1199681962}
-  m_LocalRotation: {x: -0.052968636, y: 0.000000017187304, z: 9.111286e-10, w: 0.99859625}
+  m_LocalRotation: {x: -0.052968636, y: -0.000000017187313, z: -9.1112934e-10, w: 0.99859625}
   m_LocalPosition: {x: 128.448, y: 6.0168185, z: 112.517555}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -38584,7 +38585,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1675151448}
-  m_LocalRotation: {x: -0.052968632, y: 0.000000017182222, z: 9.113982e-10, w: 0.9985962}
+  m_LocalRotation: {x: -0.052968632, y: -0.000000017182233, z: -9.1139873e-10, w: 0.9985962}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -43068,12 +43069,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1895757114}
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 95.3, y: 91.00336, z: 6.4}
-  m_LocalScale: {x: 0.1, y: 200, z: 400}
+  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.10000001, y: 200, z: 400.00003}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_Father: {fileID: 1931870241}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1 &1898838367 stripped
 GameObject:
@@ -43452,6 +43453,39 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 295af8a077d57874f90c1946941781c6, type: 3}
   m_PrefabInstance: {fileID: 555588531}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1931870240
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1931870241}
+  m_Layer: 0
+  m_Name: Wall
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1931870241
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1931870240}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 95.3, y: 91.00336, z: 6.4}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1026538176}
+  - {fileID: 624496158}
+  - {fileID: 1895757116}
+  m_Father: {fileID: 0}
+  m_RootOrder: 15
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1936374104 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 295af8a077d57874f90c1946941781c6, type: 3}
