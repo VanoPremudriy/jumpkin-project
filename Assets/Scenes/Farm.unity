@@ -11272,6 +11272,7 @@ GameObject:
   - component: {fileID: 609765171}
   - component: {fileID: 609765173}
   - component: {fileID: 609765172}
+  - component: {fileID: 609765174}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -11341,6 +11342,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 609765170}
   m_CullTransparentMesh: 1
+--- !u!114 &609765174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 609765170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0462c16de3b9361449eccc10ba245392, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: coin
 --- !u!1 &609947780
 GameObject:
   m_ObjectHideFlags: 0
@@ -23575,7 +23589,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1199681962}
-  m_LocalRotation: {x: -0.052968636, y: -0.000000017187313, z: -9.1112934e-10, w: 0.99859625}
+  m_LocalRotation: {x: -0.052968636, y: 0.000000017187304, z: 9.111286e-10, w: 0.99859625}
   m_LocalPosition: {x: 128.448, y: 6.0168185, z: 112.517555}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -25438,6 +25452,7 @@ GameObject:
   - component: {fileID: 1294810495}
   - component: {fileID: 1294810497}
   - component: {fileID: 1294810496}
+  - component: {fileID: 1294810498}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -25506,6 +25521,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1294810494}
   m_CullTransparentMesh: 1
+--- !u!114 &1294810498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1294810494}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0462c16de3b9361449eccc10ba245392, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: sprint
 --- !u!1 &1297714015 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2290309714499309213, guid: 9bd53dc9324c7d246aa8c0628ba5e373, type: 3}
@@ -26084,6 +26112,7 @@ GameObject:
   - component: {fileID: 1334921502}
   - component: {fileID: 1334921504}
   - component: {fileID: 1334921503}
+  - component: {fileID: 1334921505}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -26152,6 +26181,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1334921501}
   m_CullTransparentMesh: 1
+--- !u!114 &1334921505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1334921501}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0462c16de3b9361449eccc10ba245392, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: movement
 --- !u!4 &1336055235 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 295af8a077d57874f90c1946941781c6, type: 3}
@@ -35589,6 +35631,7 @@ GameObject:
   - component: {fileID: 1574935597}
   - component: {fileID: 1574935599}
   - component: {fileID: 1574935598}
+  - component: {fileID: 1574935600}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -35657,6 +35700,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1574935596}
   m_CullTransparentMesh: 1
+--- !u!114 &1574935600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1574935596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0462c16de3b9361449eccc10ba245392, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: light
 --- !u!1 &1583886362 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -1017436209155493656, guid: 9bd53dc9324c7d246aa8c0628ba5e373, type: 3}
@@ -38585,7 +38641,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1675151448}
-  m_LocalRotation: {x: -0.052968632, y: -0.000000017182233, z: -9.1139873e-10, w: 0.9985962}
+  m_LocalRotation: {x: -0.052968632, y: 0.000000017182222, z: 9.113982e-10, w: 0.9985962}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -38696,6 +38752,7 @@ GameObject:
   - component: {fileID: 1690894403}
   - component: {fileID: 1690894405}
   - component: {fileID: 1690894404}
+  - component: {fileID: 1690894406}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -38764,6 +38821,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1690894402}
   m_CullTransparentMesh: 1
+--- !u!114 &1690894406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1690894402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0462c16de3b9361449eccc10ba245392, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: jump
 --- !u!4 &1693131602 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 860f1009e1bff1c439ffd195eee1a1f0, type: 3}
@@ -40056,6 +40126,7 @@ GameObject:
   - component: {fileID: 1745790428}
   - component: {fileID: 1745790430}
   - component: {fileID: 1745790429}
+  - component: {fileID: 1745790431}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -40124,6 +40195,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1745790427}
   m_CullTransparentMesh: 1
+--- !u!114 &1745790431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1745790427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0462c16de3b9361449eccc10ba245392, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: pause
 --- !u!1 &1745908491 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9075993224900905494, guid: 9bd53dc9324c7d246aa8c0628ba5e373, type: 3}

@@ -51,6 +51,62 @@
         {
             "key":"customization",
             "value":"Customization"
+        },
+        {
+            "key": "music",
+            "value": "Music"
+        },
+        {
+            "key": "music_volume",
+            "value": "Music volume"
+        },
+        {
+            "key": "effect_volume",
+            "value": "Effects volume"
+        },
+        {
+            "key": "gameover",
+            "value": "Gameover"
+        },
+        {
+            "key": "replay",
+            "value": "Replay"
+        },
+        {
+            "key": "programmer",
+            "value": "I'm a programmer"
+        },
+        {
+            "key": "letsontop",
+            "value": "Let's go to the top!!!"
+        },
+        {
+            "key": "izotina",
+            "value": "Nastya Izotina\nwas here"
+        },
+        {
+            "key": "movement",
+            "value": "Movement"
+        },
+        {
+            "key": "light",
+            "value": "Flashlight"
+        },
+        {
+            "key": "sprint",
+            "value": "Sprint"
+        },
+        {
+            "key": "pause",
+            "value": "Pause"
+        },
+        {
+            "key": "jump",
+            "value": "Jump"
+        },
+        {
+            "key": "coin",
+            "value": "This is what you need\nto collect"
         }
     ]
 }

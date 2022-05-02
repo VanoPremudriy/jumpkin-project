@@ -50,7 +50,63 @@
         },
         {
             "key":"customization",
-            "value":"Кастомизация"
+            "value":"定制"
+        },
+        {
+            "key": "music",
+            "value": "音乐"
+        },
+        {
+            "key": "music_volume",
+            "value": "音乐音量"
+        },
+        {
+            "key": "effect_volume",
+            "value": "Громкость эффектов"
+        },
+        {
+            "key": "gameover",
+            "value": "游戏机"
+        },
+        {
+            "key": "replay",
+            "value": "重来"
+        },
+        {
+            "key": "programmer",
+            "value": "我是一名计算机程序员"
+        },
+        {
+            "key": "letsontop",
+            "value": "更上一层楼！！！"
+        },
+        {
+            "key": "izotina",
+            "value": "Nastya Izotina\n在这里"
+        },
+        {
+            "key": "movement",
+            "value": "运动"
+        },
+        {
+            "key": "light",
+            "value": "灯"
+        },
+        {
+            "key": "sprint",
+            "value": "加速"
+        },
+        {
+            "key": "pause",
+            "value": "暂停"
+        },
+        {
+            "key": "jump",
+            "value": "弹跳"
+        },
+        {
+            "key": "coin",
+            "value": "这就是你应该\n收集的"
         }
     ]
 }

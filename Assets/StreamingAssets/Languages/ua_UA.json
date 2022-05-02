@@ -51,6 +51,62 @@
         {
             "key":"customization",
             "value":"Кастомизация"
+        },
+        {
+            "key": "music",
+            "value": "Музика"
+        },
+        {
+            "key": "music_volume",
+            "value": "Гучність музики"
+        },
+        {
+            "key": "effect_volume",
+            "value": "Гучність ефектів"
+        },
+        {
+            "key": "gameover",
+            "value": "Гру закінчено"
+        },
+        {
+            "key": "replay",
+            "value": "Почати заново"
+        },
+        {
+            "key": "programmer",
+            "value": "Я програміст"
+        },
+        {
+            "key": "letsontop",
+            "value": "Швидше на верх!"
+        },
+        {
+            "key": "izotina",
+            "value": "Тут була\nНастя Ізотіна"
+        },
+        {
+            "key": "movement",
+            "value": "Рух"
+        },
+        {
+            "key": "light",
+            "value": "Ліхтар"
+        },
+        {
+            "key": "sprint",
+            "value": "Прискорення"
+        },
+        {
+            "key": "pause",
+            "value": "Пауза"
+        },
+        {
+            "key": "jump",
+            "value": "Стрибок"
+        },
+        {
+            "key": "coin",
+            "value": "Ось це треба було б\nзбирати"
         }
     ]
 }

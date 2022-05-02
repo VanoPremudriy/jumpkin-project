@@ -51,6 +51,62 @@
         {
             "key":"customization",
             "value":"Кастомизация"
+        },
+        {
+            "key": "music",
+            "value": "Музыка"
+        },
+        {
+            "key": "music_volume",
+            "value": "Громкость музыки"
+        },
+        {
+            "key": "effect_volume",
+            "value": "Громкость эффектов"
+        },
+        {
+            "key": "gameover",
+            "value": "Гамовер"
+        },
+        {
+            "key": "replay",
+            "value": "Начать заново"
+        },
+        {
+            "key": "programmer",
+            "value": "Я программист"
+        },
+        {
+            "key": "letsontop",
+            "value": "Скорее на верх!!!"
+        },
+        {
+            "key": "izotina",
+            "value": "Тут была\nНастя Изотина"
+        },
+        {
+            "key": "movement",
+            "value": "Движение"
+        },
+        {
+            "key": "light",
+            "value": "Фонарь"
+        },
+        {
+            "key": "sprint",
+            "value": "Ускорение"
+        },
+        {
+            "key": "pause",
+            "value": "Пауза"
+        },
+        {
+            "key": "jump",
+            "value": "Прыжок"
+        },
+        {
+            "key": "coin",
+            "value": "Вот это надо бы\nсобирать"
         }
     ]
 }
