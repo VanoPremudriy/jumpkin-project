@@ -8,10 +8,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/menu.unity
     guid: 8ee3ae4fae8a58f4b885bd8aceae7bed
-  - enabled: 0
-    path: Assets/Scenes/Test.unity
-    guid: 9e53b43e8e88ab54f9b576d202c241ff
   - enabled: 1
-    path: Assets/Scenes/ForestLevel/SampleScene.unity
+    path: Assets/Scenes/Farm.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/IslandScene.unity
+    guid: 79aa17d810c5de84c87ab77aaccad16c
   m_configObjects: {}

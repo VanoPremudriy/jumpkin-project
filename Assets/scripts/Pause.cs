@@ -51,22 +51,14 @@ public class Pause : MonoBehaviour
     [SerializeField] private Toggle MusicToggle;
     [SerializeField] GameObject gameOverPanel;
     [SerializeField] GameObject endGameMenu;
+    void Awake()
+    {
+        PlayerCustomization.Apply(pump, Custom1, Custom2);
+    }
+
     void Start() ///Стартовый метод
     {
-         for (int i=0; i < pump.Length; i ++){
-            pump[i].SetActive(false);
-        }
-         for (int i=0; i < Custom1.Length; i ++){
-            Custom1[i].SetActive(false);
-        }
-         for (int i=0; i < Custom2.Length; i ++){
-            Custom2[i].SetActive(false);
-        }
-
         MusicAudioSource.volume = PlayerPrefs.GetFloat("MusicVolume");
-        pump[PlayerPrefs.GetInt("Skin")].SetActive(true);
-        Custom1[PlayerPrefs.GetInt("Custom1")].SetActive(true);
-        Custom2[PlayerPrefs.GetInt("Custom2")].SetActive(true);
         if (PlayerPrefs.HasKey("MusicVolume")) MusicSlider.value = PlayerPrefs.GetFloat("MusicVolume");
         if (PlayerPrefs.HasKey("EffectsVolume")) EffectsSlider.value = PlayerPrefs.GetFloat("EffectsVolume");
         if (PlayerPrefs.GetInt("isMusic") == 1)
@@ -85,7 +77,7 @@ public class Pause : MonoBehaviour
         if (!MusicToggle.isOn) MusicAudioSource.volume =0;
         else MusicAudioSource.volume = MusicSlider.value;
 
-        if (Input.GetKeyDown(KeyCode.Escape) && !gameSettingsUI.activeSelf && !endGameMenu.activeSelf && !gameOverPanel.activeSelf)
+        if (Input.GetButtonDown("Cancel") && !gameSettingsUI.activeSelf && !endGameMenu.activeSelf && !gameOverPanel.activeSelf)
         {
             if (isGamePause)
             {
@@ -96,7 +88,15 @@ public class Pause : MonoBehaviour
                 pause();
             }
         }
+
+        if (Input.GetButtonDown("Cancel") && gameSettingsUI.activeSelf && !endGameMenu.activeSelf && !gameOverPanel.activeSelf)
+        {
+            backFromSettings();
+        }
         localizationManager.CurrentLanguage = PlayerPrefs.GetString("Language");
+
+        if (Input.GetKeyDown(KeyCode.N)) SceneManager.LoadScene(1);
+        if (Input.GetKeyDown(KeyCode.M)) SceneManager.LoadScene(2);
     }
 
     void resume() ///Выход из паузы
@@ -167,12 +167,15 @@ public class Pause : MonoBehaviour
         localizationManager.CurrentLanguage = languages[langCount];
     }
 
+    public void nextLevel(){
+        SceneManager.LoadScene(2);
+    }
 
 
 
 
     public void quitGame() ///Вызод из игры
     {
-        Application.LoadLevel(0);
+        SceneManager.LoadScene(0);
     }
 }

@@ -64,8 +64,22 @@ public class Menu : MonoBehaviour
     ///Музыка
     [SerializeField] AudioSource MusicAudioSource;
 
+    [SerializeField] GameObject lockPic;
+    [SerializeField] Button play;
+
     void Start() ///Стартовый метод
     {
+        if (PlayerPrefs.HasKey("Lock")){
+            if (PlayerPrefs.GetInt("Lock") == 0){
+                lockPic.SetActive(true);
+                play.interactable = false;
+            }
+            else{
+                lockPic.SetActive(false);
+                play.interactable = true;
+            } 
+        }
+        else PlayerPrefs.SetInt("Lock", 0);
         if (PlayerPrefs.HasKey("MusicVolume")) MusicSlider.value = PlayerPrefs.GetFloat("MusicVolume");
         if (PlayerPrefs.HasKey("EffectsVolume")) EffectsSlider.value = PlayerPrefs.GetFloat("EffectsVolume");
         if (PlayerPrefs.HasKey("isMusic")){
@@ -77,20 +91,21 @@ public class Menu : MonoBehaviour
         for (int i=0; i < pump.Length; i ++){
             pump[i].SetActive(false);
         }
+        for (int i = 0; i < custom1.Length; i++)
+            custom1[i].SetActive(false);
+        for (int i = 0; i < custom2.Length; i++)
+            custom2[i].SetActive(false);
 
         Time.timeScale = 1f;
-        skin = 1;
-        customCount1 = 0;
-        customCount2 = 0;
+        skin = PlayerPrefs.GetInt("Skin", 1);
+        customCount1 = PlayerPrefs.GetInt("Custom1", 0);
+        customCount2 = PlayerPrefs.GetInt("Custom2", 0);
 
-         if (PlayerPrefs.HasKey("Skin")) skin = PlayerPrefs.GetInt("Skin");
         pump[skin].SetActive(true);
-        
-        if (PlayerPrefs.HasKey("Custom1")) customCount1 = PlayerPrefs.GetInt("Custom1");
         custom1[customCount1].SetActive(true);
-
-        if (PlayerPrefs.HasKey("Custom2")) customCount2 = PlayerPrefs.GetInt("Custom2");
         custom2[customCount2].SetActive(true);
+
+        PlayerCustomization.SaveSelection(skin, customCount1, customCount2);
 
         langCount = System.Array.IndexOf(languages, PlayerPrefs.GetString("Language"));
         localizationManager.CurrentLanguage = languages[langCount];
@@ -103,6 +118,13 @@ public class Menu : MonoBehaviour
         else MusicAudioSource.volume = MusicSlider.value;
 
         RenderSettings.skybox.SetFloat("_Rotation", Time.time * 10f);
+
+        if (Input.GetKeyDown(KeyCode.B)){
+            PlayerPrefs.SetInt("Lock", 0);
+        }
+        if (Input.GetKeyDown(KeyCode.V)){
+            PlayerPrefs.SetInt("Lock", 1);
+        }
     }
 
     public void newGame() ///Начало игры
@@ -113,6 +135,7 @@ public class Menu : MonoBehaviour
         PlayerPrefs.SetFloat("MusicVolume", MusicSlider.value);
         PlayerPrefs.SetFloat("EffectsVolume", EffectsSlider.value);
         PlayerPrefs.SetInt("isMusic",isMusic);
+        PlayerCustomization.SaveSelection(skin, customCount1, customCount2);
         SceneManager.LoadScene(1);
     }
 
@@ -122,15 +145,15 @@ public class Menu : MonoBehaviour
         if (isPlayerInMenu)
         {
             DeltaRotate(go, localAxis, deltaAngle, speedRotation);
-            player.transform.position = new Vector3(1602.726f, 761.636f, -192.4529f);
+            player.transform.position = new Vector3(1601.31f, 761.681f, -193.54f);
             player.transform.rotation = Quaternion.Euler(0,200,0); //0, 0, -57.837f
             isPlayerInMenu = false;
         }
         else
         {
             DeltaRotate(go, localAxis, -deltaAngle, speedRotation);
-            player.transform.position = new Vector3(1597.794f, 762.51f, -185.218f);
-            player.transform.rotation = Quaternion.Euler(0,-220,0); //= Quaternion.Euler(0, 0, 138.334f);
+            player.transform.position = new Vector3(1598.42f, 761.681f, -186.84f);
+            player.transform.rotation = Quaternion.Euler(0,-240,0); //= Quaternion.Euler(0, 0, 138.334f);
             isPlayerInMenu = true;
         }
             int isMusic;
@@ -147,16 +170,34 @@ public class Menu : MonoBehaviour
         //DeltaRotate(lig, localAxis, deltaAngle, speedRotation);
         if (isPlayerInMenu)
         {
-            player.transform.position = new Vector3(1594.716f, 761.63f, -196.027f);
-            player.transform.rotation = Quaternion.Euler(0,280,0); //0, 0, -57.837f
+            player.transform.position = new Vector3(1596.21f, 761.681f, -195.16f);
+            player.transform.rotation = Quaternion.Euler(0,300,0); //0, 0, -57.837f
             isPlayerInMenu = false;
         }
         else
         {
-            player.transform.position = new Vector3(1597.794f, 762.76f, -185.218f);
-            player.transform.rotation = Quaternion.Euler(0,-220,0); //= Quaternion.Euler(0, 0, 138.334f);
+            player.transform.position = new Vector3(1598.42f, 761.681f, -186.84f);
+            player.transform.rotation = Quaternion.Euler(0,-240,0); //= Quaternion.Euler(0, 0, 138.334f);
             isPlayerInMenu = true;
         }
+    }
+
+    public void ChooseLevel(){
+         if (isPlayerInMenu)
+        {
+             DeltaRotate(go, localAxis, -deltaAngle, speedRotation);
+            player.transform.position = new Vector3(1590.932f, 761.681f, -193.906f);
+            player.transform.rotation = Quaternion.Euler(0, -10 ,0); //0, 0, -57.837f
+            isPlayerInMenu = false;
+        }
+        else
+        {
+            DeltaRotate(go, localAxis, deltaAngle, speedRotation);
+            player.transform.position = new Vector3(1598.42f, 761.681f, -186.84f);
+            player.transform.rotation = Quaternion.Euler(0,-240,0); //= Quaternion.Euler(0, 0, 138.334f);
+            isPlayerInMenu = true;
+        }
+
     }
 
 
@@ -221,7 +262,6 @@ public class Menu : MonoBehaviour
         else customCount1--;
         custom1[customCount1].SetActive(true);
         PlayerPrefs.SetInt("Custom1", customCount1);
-
     }
     public void secondCustom1() ///Изменение кастомной вещи
     {
@@ -266,5 +306,14 @@ public class Menu : MonoBehaviour
     public void Exit() ///Выход
     {
         Application.Quit();
+    }
+
+    public void LoadLevelOne(){
+        PlayerCustomization.SaveSelection(skin, customCount1, customCount2);
+        SceneManager.LoadScene(1);
+    }
+    public void LoadLevelTwo(){
+        PlayerCustomization.SaveSelection(skin, customCount1, customCount2);
+        SceneManager.LoadScene(2);
     }
 }

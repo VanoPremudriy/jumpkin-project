@@ -14,7 +14,7 @@ public class ShrekEggs : MonoBehaviour
     [SerializeField] GameObject[] pump;
     [SerializeField] GameObject shrek;
 
-    private async void OnTriggerEnter(Collider other) {
+    private void OnTriggerEnter(Collider other) {
           shrekVoice.Play();
           audioSource.clip = allStars;
           audioSource.Play();

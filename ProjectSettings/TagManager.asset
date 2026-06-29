@@ -10,6 +10,12 @@ TagManager:
   - EndGameMenu
   - Interface
   - PickUpCoins
+  - Wall
+  - Lava
+  - AfterLava
+  - Finish
+  - Ground
+  - GameOverPanel
   layers:
   - Default
   - TransparentFX

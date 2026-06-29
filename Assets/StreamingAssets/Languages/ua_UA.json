@@ -107,6 +107,22 @@
         {
             "key": "coin",
             "value": "Ось це треба було б\nзбирати"
+        },
+        {
+            "key": "nextlevel",
+            "value": "Наступний рівень"
+        },
+        {
+            "key":"farm",
+            "value":"Ферма"
+        },
+        {
+            "key":"island",
+            "value":"Острів"
+        },
+        {
+            "key":"chooselevel",
+            "value":"Вибір рівня"
         }
     ]
 }

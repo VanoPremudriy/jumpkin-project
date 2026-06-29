@@ -2,6 +2,7 @@ using System;
 using System.IO;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
 /*!
 	\brief Класс отвечающий за локализацию игры
@@ -51,10 +52,19 @@ public class LocalizationManager : MonoBehaviour
 
         if (Application.platform == RuntimePlatform.Android)
         {
-            WWW reader = new WWW(path);
-            while (!reader.isDone) { }
+            // На Android StreamingAssets читаются через UnityWebRequest (WWW удалён в новых Unity)
+            using (UnityWebRequest request = UnityWebRequest.Get(path))
+            {
+                var operation = request.SendWebRequest();
+                while (!operation.isDone) { }
 
-            dataAsJson = reader.text;
+                if (request.result != UnityWebRequest.Result.Success)
+                {
+                    throw new Exception("Failed to load localization file: " + request.error);
+                }
+
+                dataAsJson = request.downloadHandler.text;
+            }
         }
         else
         {

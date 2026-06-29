@@ -12,6 +12,7 @@ public class EndGame : MonoBehaviour
     [SerializeField] GameObject _interface;
     
     private void OnTriggerEnter(Collider other) {
+        PlayerPrefs.SetInt("Lock", 1);
         other.gameObject.SetActive(false);
         endGameMenu.SetActive(true);
         _interface.SetActive(false);

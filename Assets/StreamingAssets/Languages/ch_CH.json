@@ -62,7 +62,7 @@
         },
         {
             "key": "effect_volume",
-            "value": "Громкость эффектов"
+            "value": "效果音量"
         },
         {
             "key": "gameover",
@@ -107,6 +107,22 @@
         {
             "key": "coin",
             "value": "这就是你应该\n收集的"
+        },
+        {
+            "key": "nextlevel",
+            "value": "下一级"
+        },
+        {
+            "key":"farm",
+            "value":"农场"
+        },
+        {
+            "key":"island",
+            "value":"岛"
+        },
+        {
+            "key":"chooselevel",
+            "value":"等级选择"
         }
     ]
 }

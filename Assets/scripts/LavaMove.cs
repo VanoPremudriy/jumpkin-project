@@ -20,19 +20,12 @@ public class LavaMove : MonoBehaviour
     ///Скорость
     public float ySpeed;
 
-    ///Логические поля
-    bool inMax, inMin;
-
-    ///Векто передвижения
-    Vector3 vector3;
-
     void Start() ///Стартовый метод
     {
-        inMax = true;
         minY = transform.position.y;
     }
 
-     void FixedUpdate() {
+     void Update() {
         inY();
     }
     

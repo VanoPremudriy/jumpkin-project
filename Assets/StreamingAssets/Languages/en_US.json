@@ -107,6 +107,22 @@
         {
             "key": "coin",
             "value": "This is what you need\nto collect"
+        },
+        {
+            "key": "nextlevel",
+            "value": "Next Level"
+        },
+        {
+            "key":"farm",
+            "value":"Farm"
+        },
+        {
+            "key":"island",
+            "value":"Island"
+        },
+        {
+            "key":"chooselevel",
+            "value":"Choose level"
         }
     ]
 }

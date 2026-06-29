@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Cinemachine;
 
 /*!
 	\brief Класс, отвечающий за настройку управления персонажа
 */
 
+[DefaultExecutionOrder(100)]
 public class ThirdPersonMovement : MonoBehaviour {
 
     ///Контроллер персонажа
@@ -121,14 +123,47 @@ public class ThirdPersonMovement : MonoBehaviour {
     AudioSource VolodarskyAudioSource2;
 
     [SerializeField] Vector3 resp;
+
+    [SerializeField] AudioSource yamete;
     void Start() ///Стартовый метод
     {
-        Cursor.visible = visibleCursor;
         controller = GetComponent<CharacterController>();
         portal.SetActive(false);
+        SetupCamera();
     }
 
-    void Update() ///Метод обновления кадров
+    void SetupCamera()
+    {
+        if (!visibleCursor)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
+        else
+        {
+            Cursor.visible = true;
+        }
+
+        if (cam == null)
+        {
+            Camera mainCam = Camera.main;
+            if (mainCam == null)
+                mainCam = FindAnyObjectByType<Camera>();
+
+            if (mainCam != null)
+                cam = mainCam.transform;
+        }
+
+        // После апгрейда Unity ссылки Cinemachine могут слететь — привязываем заново
+        CinemachineFreeLook freeLook = FindAnyObjectByType<CinemachineFreeLook>();
+        if (freeLook != null)
+        {
+            freeLook.Follow = transform;
+            freeLook.LookAt = transform;
+        }
+    }
+
+    void LateUpdate() ///После Cinemachine — движение относительно актуальной камеры
     {
         Move();
         Jump();
@@ -175,7 +210,7 @@ public class ThirdPersonMovement : MonoBehaviour {
         if (Input.GetButtonDown("Jump") && jumpCount < 2)
         {
             jumpAudioSource.Play();
-            // Debug.Log(isGrounded + " " + jumpCount);
+            if (PlayerPrefs.GetInt("Skin") == 5) yamete.Play();            
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
             jumpCount++;
         }
@@ -190,7 +225,7 @@ public class ThirdPersonMovement : MonoBehaviour {
 
     public void Sprint() ///Метод, отвечающий за ускорение персонажа
     {
-            if (Input.GetKey(KeyCode.LeftShift) && staminaValue > 0 && isMove && isCanSprint && isGrounded)
+            if ((Input.GetButton("Sprint")) && staminaValue > 0 && isMove && isCanSprint && isGrounded)
             {
                     speed = originalSpeed + sprintSpeed;
                     staminaValue -= staminaReturn * Time.deltaTime * 2;
@@ -202,7 +237,7 @@ public class ThirdPersonMovement : MonoBehaviour {
                 staminaValue += staminaReturn * Time.deltaTime;
             }
 
-        if (isGrounded && !Input.GetKey(KeyCode.LeftShift) || !isCanSprint || !isMove) speed = originalSpeed;
+        if (isGrounded && !Input.GetButton("Sprint") || !isCanSprint || !isMove) speed = originalSpeed;
         if (staminaValue < minStaminaValue) isCanSprint = false;
         if (staminaValue > maxStaminaValue) isCanSprint = true;
         if (staminaValue > 100f) staminaValue = 100.0f;
@@ -210,17 +245,30 @@ public class ThirdPersonMovement : MonoBehaviour {
 
     }
 
+    static int groundLayer = -1;
+
+    static int GroundLayer
+    {
+        get
+        {
+            if (groundLayer < 0)
+                groundLayer = LayerMask.NameToLayer("Ground");
+            return groundLayer;
+        }
+    }
+
     public void OnTriggerEnter(Collider other) ///Действия при столкновении объекта с другими
     {
-        if (other.gameObject.layer.Equals("Ground")){
+        if (other.gameObject.layer == GroundLayer)
+        {
             jumpDownAudioSource.Play();
-            if (other.tag == "tramp")
+            if (other.CompareTag("tramp"))
             {
                 velocity.y = Mathf.Sqrt(jumpHeight *4.5f * -2f * gravity);
             }
         }
 
-         if (other.gameObject.CompareTag("PickUpCoins"))
+         if (other.CompareTag("PickUpCoins"))
       {
             pickUpAudioSource.Play();
             other.gameObject.SetActive(false);
@@ -230,7 +278,6 @@ public class ThirdPersonMovement : MonoBehaviour {
             CurrentCollectedCoins();
       }
         if (other.gameObject.CompareTag("AfterLava")){
-            Debug.Log("yes yes yes");
         }
 
         if (other.gameObject.CompareTag("Lava")){
@@ -240,11 +287,11 @@ public class ThirdPersonMovement : MonoBehaviour {
             Time.timeScale = 1f;
             Cursor.lockState = CursorLockMode.None;
             gameOverPanel.SetActive(true);
+            GameObject.FindGameObjectWithTag("Interface").SetActive(false);
             VolodarskyAudioSource.Play();
         }
 
         if (other.gameObject.CompareTag("Wall")){
-            Debug.Log("yes yes yes");
             controller.Move(new Vector3(-(controller.transform.position.x - resp.x), -(controller.transform.position.y - resp.y), -(controller.transform.position.z - resp.z)));
             VolodarskyAudioSource2.Play();
         }
@@ -260,7 +307,7 @@ public class ThirdPersonMovement : MonoBehaviour {
 
     public void SetAllCollectableCoins() ///Метод, отвечающий за вывод кол-ва собранных предметов
     {
-        allCollectableCoins.text = "/" + allCoinsStart.ToString();
+        allCollectableCoins.text = allCoinsStart.ToString();
     }
     
     public void CurrentCollectedCoins() ///Метод для конвертации собранных предметов в текст
@@ -269,7 +316,7 @@ public class ThirdPersonMovement : MonoBehaviour {
     }
 
     private void Light(){ ///Метод, отвечающий за фонарь
-        if (Input.GetMouseButton(0)){
+        if (Input.GetButton("Fire1")){
             spotLight.SetActive(true);
             pointLight.SetActive(false);
         }
